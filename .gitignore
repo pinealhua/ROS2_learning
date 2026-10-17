@@ -1,0 +1,14 @@
+# ROS 2 / colcon
+build/
+install/
+log/
+
+# VS Code local settings
+.vscode/
+
+# C/C++ generated files
+*.o
+*.out
+
+# Temporary files
+*~
