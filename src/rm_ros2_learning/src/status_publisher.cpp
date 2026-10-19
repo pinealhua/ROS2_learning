@@ -11,7 +11,7 @@ class StatusPublisher : public rclcpp::Node  //
 {
 public:
     StatusPublisher()
-    : Node("status_publisher")
+    : Node("status_publisher") //
     {
         publisher_ =
             this->create_publisher<std_msgs::msg::String>(
