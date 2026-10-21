@@ -18,8 +18,18 @@ ament_target_dependencies(
   std_msgs
 )
 
+add_executable(status_subscriber src/status_subscriber.cpp)
+
+ament_target_dependencies(
+  status_subscriber
+  rclcpp
+  std_msgs
+)
+
 install(
-  TARGETS status_publisher
+  TARGETS 
+    status_publisher
+    status_subscriber
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -20,7 +20,7 @@ public:
             );
 
         timer_ =
-            this->create_wall_timer(
+            this->create_wall_timer(  
                 500ms,
                 std::bind(
                     &StatusPublisher::timerCallback,
