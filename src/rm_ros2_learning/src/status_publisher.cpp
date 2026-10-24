@@ -10,16 +10,12 @@ using namespace std::chrono_literals;
 class StatusPublisher : public rclcpp::Node  //继承
 {
 public:
-<<<<<<< HEAD
-    StatusPublisher()
-    : Node("status_publisher") //
-    {
-=======
+
     StatusPublisher()//构造函数
     : Node("status_publisher")//构造函数初始化列表   这句话的意思是调用父类 Node 的构造函数，并将节点名称设置为 "status_publisher"
     {                         //Node 需要知道节点叫什么名字。创建子类对象时，就得先把父类初始化好
                               //初始化列表可以初始化父类
->>>>>>> 2f6c040 (保存宿舍pub改动)
+
         publisher_ =
             this->create_publisher<std_msgs::msg::String>( //模板，创建一个发string消息的pub
                 "robot_status",//话题名称
@@ -27,13 +23,11 @@ public:
             );
             //在这个节点创建一个发布者，通过这个话题发布字符串消息，把创建好的发布者保存到publisher里面
 
-<<<<<<< HEAD
-        timer_ =
-            this->create_wall_timer(  
-=======
+
+
         timer_ =   //下划线没意义表示成员变量
             this->create_wall_timer(
->>>>>>> 2f6c040 (保存宿舍pub改动)
+
                 500ms,
                 std::bind(
                     &StatusPublisher::timerCallback,//这里指定执行哪个成员函数，this就指定这个函数属于哪个对象
