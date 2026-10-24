@@ -14,13 +14,13 @@ public:
     TriggerServer()
     : Node("trigger_server")
     {
-        service_ = this->create_service<std_srvs::srv::Trigger>(
-            "check_robot",
+        service_ = this->create_service<std_srvs::srv::Trigger>(  //服务类型
+            "check_robot",    //服务名称
             std::bind(
                 &TriggerServer::handleService,
                 this,
                 _1,
-                _2
+                _2 //_1  _2只是占位符
             )
         );
 
@@ -32,14 +32,14 @@ public:
 
 private:
     void handleService(
-        const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
-        std::shared_ptr<std_srvs::srv::Trigger::Response> response)
+        const std::shared_ptr<std_srvs::srv::Trigger::Request> request, //客户端请求
+        std::shared_ptr<std_srvs::srv::Trigger::Response> response)     //服务端填写返回响应
     {
         (void)request;
 
         response->success = true;
         response->message = "Robot is OK";
-
+        //通过response填写结果，回调结束之后把响应内容返回给客户端
         RCLCPP_INFO(
             this->get_logger(),
             "Received a robot status request"

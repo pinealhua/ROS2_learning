@@ -19,6 +19,7 @@ int main(int argc, char * argv[])
         node->create_client<std_srvs::srv::Trigger>(
             "check_robot"
         );
+        //客户端必须与服务端一致
 
     while (!client->wait_for_service(1s)) {
         if (!rclcpp::ok()) {
