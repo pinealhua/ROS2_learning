@@ -13,7 +13,7 @@ class TriggerServer : public rclcpp::Node
 public:
     TriggerServer()
     : Node("trigger_server")
-    {
+    {                                   //是service的接口类型，规定service使用trigger这种格式
         service_ = this->create_service<std_srvs::srv::Trigger>(  //服务类型
             "check_robot",    //服务名称
             std::bind(
