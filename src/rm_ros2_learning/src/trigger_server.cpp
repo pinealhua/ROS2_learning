@@ -17,10 +17,10 @@ public:
         service_ = this->create_service<std_srvs::srv::Trigger>(  //服务类型
             "check_robot",    //服务名称
             std::bind(
-                &TriggerServer::handleService,
+                &TriggerServer::handleService, //收到请求之后执行哪个回调
                 this,
                 _1,
-                _2 //_1  _2只是占位符
+                _2 //_1  _2只是占位符,调用这个函数的时候，把第一个参数交给回调函数的第一个形参
             )
         );
 
@@ -35,7 +35,7 @@ private:
         const std::shared_ptr<std_srvs::srv::Trigger::Request> request, //客户端请求
         std::shared_ptr<std_srvs::srv::Trigger::Response> response)     //服务端填写返回响应
     {
-        (void)request;
+        (void)request;//没有字段是空请求
 
         response->success = true;
         response->message = "Robot is OK";

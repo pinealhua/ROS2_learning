@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(example_interfaces REQUIRED)
 
 add_executable(status_publisher src/status_publisher.cpp)
 
@@ -25,6 +26,11 @@ ament_target_dependencies(trigger_server rclcpp std_srvs)
 add_executable(trigger_client src/trigger_client.cpp)
 ament_target_dependencies(trigger_client rclcpp std_srvs)
 
+add_executable(add_server src/add_server.cpp)
+ament_target_dependencies(add_server rclcpp example_interfaces)
+
+add_executable(add_client src/add_client.cpp)
+ament_target_dependencies(add_client rclcpp example_interfaces)
 
 add_executable(status_subscriber src/status_subscriber.cpp)
 
@@ -40,6 +46,8 @@ install(
     status_subscriber
     trigger_client
     trigger_server
+    add_server
+    add_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
